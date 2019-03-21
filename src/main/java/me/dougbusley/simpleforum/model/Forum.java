@@ -12,7 +12,7 @@ import lombok.Data;
 public class Forum {
   @Id
   @GeneratedValue
-  private long id;
+  private Long id;
 
   private String topic;
 

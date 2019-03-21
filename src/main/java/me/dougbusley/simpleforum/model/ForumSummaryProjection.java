@@ -7,6 +7,6 @@ import org.springframework.data.rest.core.config.Projection;
 public interface ForumSummaryProjection {
   String getTopic();
 
-  @Value("#{target.posts.size()}")
+  @Value("#{@postRepository.countByForum(target)}")
   Integer getPostCount();
 }

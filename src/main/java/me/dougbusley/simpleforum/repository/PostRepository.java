@@ -1,6 +1,15 @@
 package me.dougbusley.simpleforum.repository;
 
+import me.dougbusley.simpleforum.model.Forum;
 import me.dougbusley.simpleforum.model.Post;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+import org.springframework.data.repository.query.Param;
 
-public interface PostRepository extends JpaRepository<Post, Long> {}
+public interface PostRepository extends JpaRepository<Post, Long>, QuerydslPredicateExecutor<Post> {
+  long countByForum(Forum forum);
+
+  Page<Post> findByForum_Id(@Param("forumId") Long id, Pageable pageable);
+}

@@ -11,16 +11,12 @@ import lombok.Data;
 @Entity
 @Data
 public class Post {
-  @Id
-  @GeneratedValue
-  private long id;
+  @Id @GeneratedValue private Long id;
 
   @Column(columnDefinition = "text")
   private String message;
 
-  @ManyToOne
-  @JoinColumn(name = "person_id", referencedColumnName = "id")
-  private Person person;
+  @ManyToOne @JoinColumn private Person person;
 
   @ManyToOne @JoinColumn private Forum forum;
 }
